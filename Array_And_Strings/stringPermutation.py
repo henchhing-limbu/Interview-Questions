@@ -4,6 +4,7 @@ def permutation(s):
 def permutHelper(s, prefix):
     if s == "":
         print(prefix)
+	return
     for i in range(len(s)):
         rem = s[:i] + s[i+1:]
         permutHelper(rem, prefix + s[i])
