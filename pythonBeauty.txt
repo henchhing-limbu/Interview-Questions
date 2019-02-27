@@ -1,5 +1,5 @@
-* Looping backwards
-
+** Looping backwards
+-----------------------------------------
 for i in range(len(a) - 1, -1, -1):
 	print a[i]
 
@@ -8,16 +8,16 @@ for blah in reversed(a):
 
 -> The second one is faster
 
-* Looping over a collection and indices
-
+** Looping over a collection and indices
+-----------------------------------------
 for i in range(len(a)):
 	print i, '-->', a[i]
 
 for i, blah in enumerate(a):
 	print i, '-->', blah
 
-* Looping over two collections
-
+** Looping over two collections
+-----------------------------------------
 n = min(len(blahs1), len(blahs2))
 for i in range(n):
 	print blahs1[i], '-->', blahs2[i]
@@ -29,8 +29,8 @@ for blah1, blah2 in izip(blahs1, blahs2):
 	print blah1, '-->', blah2
 
 
-* Looping in sorted order
-
+** Looping in sorted order
+-----------------------------------------
 for color in sorted(colors):
 	print color
 
@@ -38,8 +38,8 @@ for color in sorted(color, reverse=True):
 	print color
 
 
-* Custom sort order
-
+** Custom sort order
+-----------------------------------------
 def compare_length(c1, c2):
 	if len(c1) < len(c2): return -1
 	if len(c1) > len(c2): return 1
@@ -49,7 +49,8 @@ print sorted(colors, cmp=compare_length)
 
 print sorted(colors, key=len) 
 
-* Call a function until a sentinel value
+** Call a function until a sentinel value
+-----------------------------------------
 blocks = []
 while True:
 	block = f.read(32)
@@ -62,7 +63,8 @@ for block in iter(partial(f.read(32), ''):
 	blocks.append(block)
 
 
-* Distinguishing multiple exit loops in python
+** Distinguishing multiple exit loops in python
+-----------------------------------------
 def find(seq, target):
 	found = False
 	for i, value in enumerate(seq):
@@ -81,7 +83,8 @@ def find(seq, target):
 		return -1
 	return 
 
-* Loop over dictioary keys and values
+** Loop over dictioary keys and values
+-----------------------------------------
 for key in dic:
 	print key, '-->', dic[key]
 
