@@ -18,7 +18,7 @@ that checks the minimum cost of coloring the previous house without taking into 
 the cost of painting previous house with the color the house is being painted with.
 makes the runtime O(n^3) 
 '''
-def min_cost_build_houses(color_cost):
+def min_cost_build_houses_I(color_cost):
     num_houses = len(color_cost)
     num_colors = len(color_cost[0])
     build_cost = [[0]*num_colors for _ in range(num_colors)]
@@ -48,5 +48,37 @@ Could use solution 1
 and simple store the highest minimum cost and the second highest minimum cost
 along with the colors with those values
 '''
-print(min_cost_build_houses(arr))
+print(min_cost_build_houses_I(arr))
 
+from collections import namedtuple
+HouseColorCost = namedtuple('HouseColorCost', ('color', 'cost'))
+
+def get_min_and_second_min(build_cost):
+	min_color_cost, second_min_color_cost = HouseColorCost(None, float('inf')), HouseColorCost(None, float('inf'))
+	for i in range(len(build_cost)):
+		cost = build_cost[i]
+		if cost <= min_color_cost.cost:
+			second_min_color_cost = min_color_cost
+			min_color_cost = HouseColorCost(i, cost)
+		elif cost < second_min_color_cost.cost:
+			second_min_color_cost = HouseColorCost(i, cost)
+	return min_color_cost, second_min_color_cost
+
+min_color_cost, second_min_color_cost = get_min_and_second_min([1, 3, 2, 1, 4])
+
+def min_cost_build_houses_II(color_cost):
+	num_houses = len(color_cost)
+	num_colors = len(color_cost[0])
+	build_costs = [[0 for _ in range(num_colors)] for _ in range(num_colors)]
+	build_costs[0] = color_cost[0]
+
+	for i in range(1, num_houses):
+		min_cost, second_min_cost = get_min_and_second_min(build_costs[i-1])
+		for j in range(num_colors):
+			if min_cost.color == j:
+				build_costs[i][j] = second_min_cost.cost + color_cost[i][j]
+			else:
+				build_costs[i][j] = min_cost.cost + color_cost[i][j]
+	return min(build_costs[-1])
+
+print(min_cost_build_houses_II(arr))
