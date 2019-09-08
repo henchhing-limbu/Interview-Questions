@@ -8,3 +8,7 @@ def is_permutation(s1, s2):
     s2_ctr = Counter(s2)
     return s1_ctr == s2_ctr
 
+assert is_permutation('elbow', 'below') is True
+assert is_permutation('henchhing', 'kalesh') is False
+assert is_permutation('elbow', 'Below') is False
+assert is_permutation('', '') is True

@@ -1,6 +1,7 @@
 # This functions returns the maximum difference between two numbers in 
 # input array where the number should come before second in the array
 
+# TODO(henxing): This question might be wrong.
 # returns -inf if the numbers are in descending order
 def maxDiff(a):
     diff = float('-inf')

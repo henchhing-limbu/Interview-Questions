@@ -48,6 +48,7 @@ def check_add_del(s1, s2):
             j += 1
     return True
             
-print(valid_edit('pale', 'bae'))
-print(valid_edit('pale', 'bale'))
-print(valid_edit('pales', 'pale'))
+assert valid_edit('pale', 'bae') == False
+assert valid_edit('pale', 'bale') == True
+assert valid_edit('pales', 'pale') == True
+assert valid_edit('', 'a') == True

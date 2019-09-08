@@ -3,12 +3,14 @@
 # k needs to be greater than 0
 
 def longestSubstr(s, k):
+	if not s or k < 1:
+		return ''
 	count = 0
 	charIdx = {}
 	start_idx = 0
 	substr = ""
 	
-	for i in range(len(s)):
+	for i, char in enumerate(s):
 		char = s[i]		
 		if char not in charIdx:
 			count += 1
@@ -18,13 +20,19 @@ def longestSubstr(s, k):
 				if length > len(substr):
 					substr = s[start_idx:i]
 				
-				# start idx is char prev idx + 1
+				# The first character of the index needs to be removed from
+				# the substring. We need to update start index to be latest
+				# first character's index plus 1. This will make sure that
+				# the substring from new start index to current character does
+				# not containt the first character.
 				start_idx = charIdx[s[start_idx]] + 1
-				
-		charIdx[char] = i
+		
+		else: # Update the character's old index with the new index.
+			charIdx[char] = i
 	if (i - start_idx) > len(substr):
 		substr = s[start_idx:i]
 	
 	return substr
 
-print(longestSubstr("abcba", 2))
+assert longestSubstr("abcba", 2) == "bcb"
+assert longestSubstr('', 1) is ''
