@@ -49,7 +49,7 @@ def _update_profits(profit, profit1, profit2):
 	if profit1 <= profit <= profit2:
 		profit1 = profit
 	elif profit > profit2:
-		profit2 = profit
+		profit1, profit2 = profit2, profit
 	return profit1, profit2
 
 assert sell_stock_iii([1, 2, 3, 4, 5]) is 4
