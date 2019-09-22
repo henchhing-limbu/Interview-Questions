@@ -25,6 +25,9 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 """
 
+# TODO(henxing): This is wrong solution. The fault lies with this example.
+# [1, 2, 1, 4, 2, 5]
+
 # The idea is similar to sell_stock_ii
 # We simply need to keep track of two highest profits that can be made from
 # buying and selling of stocks.
