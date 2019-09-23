@@ -24,14 +24,14 @@ The flattened tree should look like:
 """
 
 def flatten(root):
-	stack = []
-	while root:
-		if root.right:
-			stack.append(root.right)
+    stack = []
+    while root:
+        if root.right:
+                stack.append(root.right)
 
-		if root.left:	# if there is right child
-			root.right = root.left
-		elif stack:	# get the node from the stack
-			root.right = stack.pop()
-		root.left = None
-		root = root.right
+        if root.left:	# if there is right child
+                root.right = root.left
+        elif stack:	# get the node from the stack
+                root.right = stack.pop()
+        root.left = None
+        root = root.right
