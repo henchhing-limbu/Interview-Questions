@@ -29,17 +29,17 @@ def calc_equation(equations, values, queries):
         graph[x].append((y, value))
         graph[y].append((x, 1/value))
 
-    print(graph)
     # for each query, do bfs in graph to compute the result.
     result = [compute_result(x, y, graph) for x, y in queries]
-    print(result)
     return result
 
 def compute_result(x, y, graph):
     """Computes the value of x/y using relations denoted by graph."""
     if x not in graph or y not in graph:
         return -1
+
     queue = deque([(x, 1)]) # Holds the variable name and value of x/variable
+    visited = set() # Keeps track of already visited nodes to avoid infinite loop
     # Since the input is always valid, this loop should end at some point with
     # the if condition inside it.
     while queue:
@@ -48,10 +48,19 @@ def compute_result(x, y, graph):
         if node == y:
             return val
         for neighbor, neighbor_val in graph[node]:
-            queue.append((neighbor, val * neighbor_val))
+            if neighbor not in visited:
+                queue.append((neighbor, val * neighbor_val))
+        visited.add(node)
+    return -1
 
 equations = [['a', 'b'], ['b', 'c']]
 values = [2.0, 3.0]
 queries = [['a', 'c'], ['b', 'a'], ['a', 'e'], ['a', 'a'], ['x', 'x']]
 
-calc_equation(equations, values, queries)
+assert calc_equation(equations, values, queries) == [6, 0.5, -1, 1, -1]
+
+equations = [["a","b"],["c","d"]]
+values = [1.0,1.0]
+queries = [["a","c"],["b","d"],["b","a"],["d","c"]]
+
+assert calc_equation(equations, values, queries) == [-1, -1, 1, 1]
