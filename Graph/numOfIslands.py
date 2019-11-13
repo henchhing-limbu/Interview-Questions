@@ -3,6 +3,8 @@
 
 # Given a grid with 1 and 0, you are supposed to return the number of 
 # groups of connected 1s
+
+# TODO(henxing): Fix this
 import collections
 Coordinate = collections.namedtuple("row", "col")
 

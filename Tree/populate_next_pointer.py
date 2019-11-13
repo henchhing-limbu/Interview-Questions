@@ -34,3 +34,17 @@ def connect(root):
 				nxt_lvl_nodes.append(lvl_nodes[i].right)
 		lvl_nodes = nxt_lvl_nodes
 	return root
+
+
+# Recursive approach
+def connect_recursive(root):
+    if not root:
+        return
+    # point left child next to right child
+    if root.left:
+        root.left.next = root.right
+        # need to point next of right child to root's next pointed node's left
+        # child.
+        root.right.next = root.next.left if root.next else None
+    connect_recursive(root.left)
+    connect_recursive(root.right)

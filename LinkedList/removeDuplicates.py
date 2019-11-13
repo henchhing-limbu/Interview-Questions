@@ -37,6 +37,7 @@ def remDup(linkedList):
         ptr.next = curr
     print(linkedList.size())
     return linkedList
+
 linked_list = LinkedList()
 # print(linked_list.size())
 linked_list.insert(5)
