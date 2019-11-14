@@ -18,6 +18,21 @@ queries = [ ["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"] ].
 The input is always valid. You may assume that evaluating the queries will result in no division by zero and there is no contradiction.
 """
 
+# This problem can be seen as a graph problem where the vertices are varibales
+# and the edges are the result of one variable divided by another.
+# For example: a and b are two vertices.
+# a -> b edge weight will be 2.0
+# b -> a edge needs to be 1/2.0
+
+# We need to create this graph.
+# After we create the graph, we simply need to go through each queries and
+# take the two operands as source and destination node in the graph. We simply
+# need to find a path from source to destination. While doing so, the product
+# of all the edges weights in the path is the value of source / destination.
+
+# Time Complexity: O(V+E)
+# Space Complexity: O(V+E)
+
 from collections import defaultdict
 from collections import deque
 
