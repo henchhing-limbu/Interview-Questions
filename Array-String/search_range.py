@@ -19,3 +19,8 @@ Output: [-1,-1]
 # Required time complexity is O(log n).
 # This must be a binary search problem.
 
+# Do Binary search to find the target number first.
+# Do binary search on left side to find left < target
+# Do binary search on right side to find right > target
+
+
