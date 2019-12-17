@@ -26,6 +26,13 @@ A solution set is:
 ]
 """
 
+# The template used here can be used for most of the combiantion problems.
+# You have a solution set to keep track of different combinations we want.
+# You have search method() that looks for different combiantions.
+# You have candidates() method that returns search space for given stage.
+# You have is_valid() method that checks if a solution is valid or not
+
+
 def is_valid(s, target):
     return sum(s) == target
 
@@ -49,6 +56,4 @@ def combination_sum(candidates, target):
     return [list(solution) for solution in solutions]
 
 solutions = combination_sum([2, 3, 6, 7], 7)
-assert solutions == [[7], [2,2,3]]
 solutions = combination_sum([2, 3, 5], 8)
-print(solutions)

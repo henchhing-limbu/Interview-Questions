@@ -2,13 +2,13 @@ def quickSort(a):
     quickSortHelper(a, 0, len(a)-1)
     
 def quickSortHelper(a, i, j):
-    while i < j:
-        ind = partition(a, i, j)
-        quickSortHelper(a, i, ind - 1)
-        quickSortHelper(a, ind + 1, j)
+    if i >= j:
+        return
+    ind = partition(a, i, j)
+    quickSortHelper(a, i, ind - 1)
+    quickSortHelper(a, ind + 1, j)
 
 def partition(a, i, j):
-    print(a)
     pivot = a[j]
     ind = i - 1
     for x in range(i,j):
@@ -20,5 +20,4 @@ def partition(a, i, j):
 
 arr = [1,7,8,9,16,5]
 quickSort(arr)
-print(arr)
         

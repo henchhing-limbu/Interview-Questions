@@ -1,8 +1,6 @@
 """
 Given a collection of intervals, find the minimum number of intervals you need to remove to make the rest of the intervals non-overlapping.
 
-
-
 Example 1:
 
 Input: [[1,2],[2,3],[3,4],[1,3]]
@@ -26,6 +24,17 @@ You may assume the interval's end point is always bigger than its start point.
 Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap each other.
 """
 
+# This problem simply breaks down to finding number of overlapping intervals.
+# Sorting the intervals based on end time makes it a greedy choice problem.
+
+# Example:
+# [[1, 5], [2, 3], [3, 4]]
+# After sorting:
+# [[2,3], [3,4], [1,5]]
+# if interval.st < last_interval.et there is overlap. Get rid of it.
+# But keep last_interval unchanged.
+
+
 def erase_overlap_intervals(intervals):
     intervals.sort(key=lambda interval: interval[1])
     last_interval = intervals[0]
@@ -43,3 +52,4 @@ def erase_overlap_intervals(intervals):
 assert erase_overlap_intervals([[1, 2], [2, 3], [3, 4], [1, 3]]) is 1
 assert erase_overlap_intervals([[1, 2], [1, 2], [1, 2]]) is 2
 assert erase_overlap_intervals([[1, 2], [2, 3]]) is 0
+assert erase_overlap_intervals([[1, 5], [2,3], [3,4]]) is 1
